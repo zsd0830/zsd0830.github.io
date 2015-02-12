@@ -1,0 +1,43 @@
+body {
+	background-color: #FFFFCC;
+}
+
+#title {
+	position: relative;
+	margin:20px;
+	background: #000;
+	height: 50px;
+	border-radius: 10px;
+}
+
+h1 {
+	font-family: Arial;
+	text-align: center;
+	padding-top: 10px;
+	color: #FFFFCC;
+	font-size: 20px;
+}
+
+#information_table{
+	border:8px ridge #999999;
+	margin:auto;
+}
+
+th{
+	position: relative;
+	margin: auto;
+	text-align: center;
+	font-family: Helvetica, Arial, sans-serif;
+}
+
+td{
+	font-family: Verdana;
+	font-size: 10px;
+	font-weight: lighter;
+	text-align:center;
+	margin:auto;
+	background-color: #FFFFFF;
+	padding:5px;
+	width:100px;
+	border: 2px solid #999 ;
+}
