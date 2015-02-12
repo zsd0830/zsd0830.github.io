@@ -1,5 +1,5 @@
 $(document).ready(function(){
-  $.getJSON("StudentInformation.json", function(sad){
+  $.getJSON("https://hivelab.org/static/students.json", function(sad){
       var c=[];
         for (var i = 0; i < sad.length; i++) {
             c = $('<tr/>');
