@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<script src="jquery-1.11.2.js"></script> 
+    	<script src="Student_js.js"></script>
+		<link type="text/css" rel="stylesheet" href="MyStylesheet.css"/>
+		<title>Information of Applicants</title>
+	</head>
+	<body>
+		<div id="title">
+			<h1>Applicants Information</h1></div>
+	    <table id= "information_table">
+			     <tbody>   
+                  <tr id="tablehead">
+				        <th>Name</th>
+				        <th>GPA</th>
+				        <th>GRE_V</th>
+				    	 <th>GRE_Q</th>
+				        <th>Essay</th>
+				        <th>Recom</th>
+			    	</tr>
+			   	 </tbody>
+			</table>
+	</body>
+</html>
