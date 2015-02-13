@@ -18,6 +18,12 @@ h1 {
 	font-size: 20px;
 }
 
+h2{
+	font-family:Arial;
+	text-align: center;
+	font-size: 16px;
+}
+
 #information_table{
 	border:8px ridge #999999;
 	margin:auto;
@@ -43,5 +49,6 @@ td{
 }
 
 #change_color{
-	background-color:#FF0000;
+	background-color:#6FF;
+	text-shadow:#999;
 }
