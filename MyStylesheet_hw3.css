@@ -1,0 +1,19 @@
+h1 {
+	font-family:Arial;
+	text-align:center;
+}
+
+body {
+  font: 10px sans-serif;
+}
+
+.axis path, 
+.axis line {
+  fill: none;
+  stroke: #000;
+  shape-rendering: crispEdges;
+}
+
+.point {
+  stroke: white;
+}
