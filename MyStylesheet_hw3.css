@@ -1,19 +1,20 @@
 h1 {
-	font-family:Arial;
+	font-family:Georgia;
 	text-align:center;
 }
 
+
 body {
-  font: 10px sans-serif;
+	font: 11px Trebuchet MS;
 }
 
 .axis path, 
 .axis line {
-  fill: none;
-  stroke: #000;
-  shape-rendering: crispEdges;
+	fill: none;
+	stroke: #000;
+	shape-rendering: crispEdges;
 }
 
 .point {
-  stroke: white;
+	stroke: white;
 }

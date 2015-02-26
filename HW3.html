@@ -9,95 +9,97 @@
 </head>
 
 <body>
-<h1>See What Happened among Math&Science Scores and Total Instructional Hours</h1>
- <script type="text/javascript">
-var margin = {top: 20, right: 20, bottom: 30, left: 40},
-    width = 960 - margin.left - margin.right,
-    height = 500 - margin.top - margin.bottom;
+  <h1>See What Happened among Math&Science Scores and Total Instructional Hours</h1>
+  <p>Author Name: Shaodong Zhang   Data Sourse: Natural Center for Education Statistics</p>
+  <script type="text/javascript">
+    var margin = {top: 20, right: 20, bottom: 30, left: 40},
+        width = 960 - margin.left - margin.right,
+        height = 500 - margin.top - margin.bottom;
 
-var x = d3.scale.linear()
-    .range([0, width]);//yScale
+    var x = d3.scale.linear()
+              .range([0, width]);// yScale
 
-var y = d3.scale.linear()
-    .range([height, 0]);//xScale
+    var y = d3.scale.linear()
+              .range([height, 0]);// xScale
 
-var z = d3.scale.category10();//Color categories
+    var z = d3.scale.category10();// Color categories
 
-var svg = d3.select("body").append("svg")
-    .attr("width", width + margin.left + margin.right)
-    .attr("height", height + margin.top + margin.bottom)
-  .append("g")
-    .attr("transform", "translate(" + margin.left + "," + margin.top + ")");//svg
+    var svg = d3.select("body")
+			          .append("svg")
+                .attr("width", width + margin.left + margin.right)
+                .attr("height", height + margin.top + margin.bottom)
+                .append("g")
+                .attr("transform", "translate(" + margin.left + "," + margin.top + ")");//svg
 
 
-d3.csv("data_hw3.csv", function(data) {
+	  d3.csv("data_hw3.csv", function(data) {
 
-  // Compute the series names ("y1", "y2", etc.) from the loaded CSV.
-  var seriesNames = d3.keys(data[0])
-      .filter(function(d) { return d !== "x"; })
-      .sort();
+    // Compute the series names ("y1", "y2", etc.) from the loaded CSV.
+    var seriesNames = d3.keys(data[0])
+                        .filter(function(d) { return d !== "x"; })
+                        .sort();
 
-  // Map the data to an array of arrays of {x, y} tuples.
-  var series = seriesNames.map(function(series) {
-    return data.map(function(d) {
-      return {x: +d.x, y: +d[series]};
-    });
-  });
+    // Map the data to an array of arrays of {x, y} tuples.
+    var series = seriesNames.map(function(series) {
+                  return data.map(function(d) {
+                    return {x: +d.x, y: +d[series]};
+                  });
+                });
 
-  // Compute the scales’ domains.
-  x.domain(d3.extent(d3.merge(series), function(d) { return d.x; })).nice();
-  y.domain(d3.extent(d3.merge(series), function(d) { return d.y; })).nice();
+    // Compute the scales’ domains.
+    x.domain(d3.extent(d3.merge(series), function(d) { return d.x; })).nice();
+    y.domain(d3.extent(d3.merge(series), function(d) { return d.y; })).nice();
 
-  // Add the x-axis.
-  svg.append("g")
-      .attr("class", "x axis")
-      .attr("transform", "translate(0," + height + ")")
-      .call(d3.svg.axis().scale(x).orient("bottom"));
+    // Add the x-axis.
+    svg.append("g")
+       .attr("class", "x axis")
+       .attr("transform", "translate(0," + height + ")")
+       .call(d3.svg.axis().scale(x).orient("bottom"));
 
-  // Add the y-axis.
-  svg.append("g")
-      .attr("class", "y axis")
-      .call(d3.svg.axis().scale(y).orient("left"));
+    // Add the y-axis.
+    svg.append("g")
+       .attr("class", "y axis")
+       .call(d3.svg.axis().scale(y).orient("left"));
 
-  // Add the points!
-  svg.selectAll(".series")
-      .data(series)
-    	.enter()
-		.append("g")
-      .attr("class", "series")
-      .style("fill", function(d, i) { return z(i); })
-    .selectAll(".point")
-      .data(function(d) { return d; })
-    .enter().append("circle")
-      .attr("class", "point")
-      .attr("r", 4.5)
-      .attr("cx", function(d) { return x(d.x); })
-      .attr("cy", function(d) { return y(d.y); });
+    // Add the points.
+    svg.selectAll(".series")
+       .data(series)
+       .enter()
+	     .append("g")
+       .attr("class", "series")
+       .style("fill", function(d, i) { return z(i); })
+       .selectAll(".point")
+       .data(function(d) { return d; })
+       .enter().append("circle")
+       .attr("class", "point")
+       .attr("r", 4.5)
+       .attr("cx", function(d) { return x(d.x); })
+       .attr("cy", function(d) { return y(d.y); });
 
-  var legend = svg.selectAll(".legend")
-      .data(z.domain())
-    .enter().append("g")
-      .attr("class", "legend")
-      .attr("transform", function(d, i) { return "translate(0," + i * 20 + ")"; });
+    // Add the marks.
+    var legend = svg.selectAll(".legend")
+                    .data(z.domain())
+                    .enter().append("g")
+                    .attr("class", "legend")
+                    .attr("transform", function(d, i) { return "translate(0," + i * 20 + ")"; });
 
-  legend.append("rect")
-      .attr("x", width - 18)
-      .attr("width", 18)
-      .attr("height", 18)
-      .style("fill", z);
+    legend.append("rect")
+          .attr("x", width - 18)
+          .attr("width", 18)
+          .attr("height", 18)
+          .style("fill", z);
 
-  legend.append("text")
-      .attr("x", width - 24)
-      .attr("y", 9)
-      .attr("dy", ".35em")
-      .style("text-anchor", "end")
-      .text(function(d) { if(d===1){return "Science";}
+    legend.append("text")
+          .attr("x", width - 24)
+          .attr("y", 9)
+          .attr("dy", ".35em")
+          .style("text-anchor", "end")
+          .text(function(d) { if(d===1){return "Science";}
 	  						else {return "Math";}
-			});
-
-});
-
-</script>
-
+			    });
+    });
+  </script>
+<p>Story of The Scatter: The average scores of math and science are similar in same country and system so that the dots of same place are always pretty closed. It may reveal that the abilities on math and on science are always positive correlated, which is normal, because in common sense, a outstanding capacity of dealing with math problems prompt logically scientific capacity, and vice versa.</p>
+    <p>However, maybe we spend much time on studying, our endeavor is not put only on math and science. More instructional hours on study doesn't dramatically influence the average scores of math and science. As a result, effeciently and rationally using time is a proper way to get success.</p>    
 </body>
 </html>
