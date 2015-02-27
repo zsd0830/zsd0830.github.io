@@ -18,3 +18,9 @@ body {
 .point {
 	stroke: white;
 }
+
+#story{
+	text-align:center;
+	border:ridge;
+	
+}
