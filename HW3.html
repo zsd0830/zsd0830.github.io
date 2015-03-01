@@ -62,6 +62,7 @@
     x.domain(d3.extent(d3.merge(series), function(d) { return d.x; })).nice();
     y.domain(d3.extent(d3.merge(series), function(d) { return d.y; })).nice();
 
+    <div align="center">
     // Add the x-axis.
     svg.append("g")
        .attr("class", "x axis")
@@ -110,6 +111,7 @@
                 else {return "Math";}
           });
     });
+    </div>
   </script>
   <div id="story">
     <p><strong>Story of The Scatter</strong></p> 
