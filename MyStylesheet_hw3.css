@@ -21,6 +21,9 @@ body {
 
 #story{
 	text-align:center;
-	border:ridge;
-	
+	border:ridge;	
+}
+
+span{
+	  width:100px; height:20px; line-height:20px; text-align:center; float:left;
 }
