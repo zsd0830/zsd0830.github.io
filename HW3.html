@@ -20,6 +20,7 @@
 
 
 <body>
+  <div align="center">
   <h1>See What Happened among Math & Science Scores and Total Instructional Hours</h1>
   <div display="inline"  align="center"><p><strong>Author Name:</strong> Shaodong Zhang</p>   <p><strong>Data Sourse:</strong> Natural Center for Education Statistics</p></div>
   
@@ -62,7 +63,6 @@
     x.domain(d3.extent(d3.merge(series), function(d) { return d.x; })).nice();
     y.domain(d3.extent(d3.merge(series), function(d) { return d.y; })).nice();
 
-    <div align="center">
     // Add the x-axis.
     svg.append("g")
        .attr("class", "x axis")
