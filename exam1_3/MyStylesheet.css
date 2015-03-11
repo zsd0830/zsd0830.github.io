@@ -1,0 +1,30 @@
+h1 {
+	text-align:center;
+	font-size:30px;
+}
+
+.axis path,
+.axis line {
+    fill: none;
+    stroke: black;
+    shape-rendering: crispEdges;
+}
+
+.axis text {
+	font-family: Arial;
+    font-size: 12px;
+}
+
+.univ{ 
+	font-family:Arial;
+	font-size:13px;
+}
+
+.num{
+	font-family:Arial;
+	font-size:15px;
+}
+
+svg {
+	margin-left:10%;
+}
