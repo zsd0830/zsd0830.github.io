@@ -259,20 +259,19 @@ d3.json("exam1.json",function(dataset){
 
 	        		svg.selectAll(".dayi")
                 	.transition()
-                	.duration(500)
 	        		.attr("y",h+padding);
 
 					svg.selectAll(".daer")
 						.data(sophomore)
 						 .transition()
-                		.duration(500)
+
 						.attr("y",function(d){
 							return h-Yscale(d)+padding;});
 
 					svg.selectAll(".dasan")
 			            .data(junior)
 						 .transition()
-                		.duration(500)
+
 						.attr("y",function(d,i){
 							return h-Yscale(d)+padding-Yscale(sophomore[i]);
 						});
@@ -280,7 +279,7 @@ d3.json("exam1.json",function(dataset){
 					svg.selectAll(".dasi")
 						.data(senior)
 						.transition()
-                		.duration(500)
+
 						.attr("y",function(d,i){
 							return h-Yscale(d)+padding-Yscale(sophomore[i])-Yscale(junior[i]);
 						});	
@@ -291,7 +290,6 @@ d3.json("exam1.json",function(dataset){
 
 	        		svg.selectAll(".dayi")
                 	.transition()
-                	.duration(500)
 			        .attr("y",function(d,i){
 				      return h-Yscale(d)+padding;;
 						})
@@ -299,14 +297,14 @@ d3.json("exam1.json",function(dataset){
 					svg.selectAll(".daer")
 						.data(sophomore)
 						 .transition()
-                		.duration(500)
+
 						.attr("y",function(d,i){
 							return h-Yscale(freshman[i])-Yscale(d)+padding;});
 
 					svg.selectAll(".dasan")
 			            .data(junior)
 						 .transition()
-                		.duration(500)
+
 						.attr("y",function(d,i){
 							return h-Yscale(freshman[i])-Yscale(sophomore[i])-Yscale(d)+padding;
 						});
@@ -314,7 +312,7 @@ d3.json("exam1.json",function(dataset){
 					svg.selectAll(".dasi")
 						.data(senior)
 						.transition()
-                		.duration(500)
+
 						.attr("y",function(d,i){
 							return h-Yscale(freshman[i])-Yscale(sophomore[i])-Yscale(junior[i])-Yscale(d)+padding;
 						});	
@@ -330,20 +328,19 @@ d3.json("exam1.json",function(dataset){
 	        		
 	        		svg.selectAll(".daer")
                 	.transition()
-                	.duration(500)
 	        		.attr("y",h+padding);
 
 					svg.selectAll(".dayi")
 						.data(freshman)
 						 .transition()
-                		.duration(500)
+
 						.attr("y",function(d,i){
 							return h-yscale(d)+padding;});
 
 					svg.selectAll(".dasan")
 			            .data(junior)
 						 .transition()
-                		.duration(500)
+
 						.attr("y",function(d,i){
 							return h-yscale(d)+padding-yscale(freshman[i]);
 						});
@@ -351,7 +348,7 @@ d3.json("exam1.json",function(dataset){
 					svg.selectAll(".dasi")
 						.data(senior)
 						.transition()
-                		.duration(500)
+
 						.attr("y",function(d,i){
 							return h-yscale(d)+padding-yscale(freshman[i])-yscale(junior[i]);
 						});
@@ -364,7 +361,6 @@ d3.json("exam1.json",function(dataset){
 
 	        		svg.selectAll(".dayi")
                 	.transition()
-                	.duration(500)
 			        .attr("y",function(d,i){
 				      return h-Yscale(d)+padding;;
 						})
@@ -372,14 +368,14 @@ d3.json("exam1.json",function(dataset){
 					svg.selectAll(".daer")
 						.data(sophomore)
 						 .transition()
-                		.duration(500)
+
 						.attr("y",function(d,i){
 							return h-Yscale(freshman[i])-Yscale(d)+padding;});
 
 					svg.selectAll(".dasan")
 			            .data(junior)
 						 .transition()
-                		.duration(500)
+
 						.attr("y",function(d,i){
 							return h-Yscale(freshman[i])-Yscale(sophomore[i])-Yscale(d)+padding;
 						});
@@ -387,7 +383,7 @@ d3.json("exam1.json",function(dataset){
 					svg.selectAll(".dasi")
 						.data(senior)
 						.transition()
-                		.duration(500)
+
 						.attr("y",function(d,i){
 							return h-Yscale(freshman[i])-Yscale(sophomore[i])-Yscale(junior[i])-Yscale(d)+padding;
 						});	
@@ -399,20 +395,19 @@ d3.json("exam1.json",function(dataset){
 	        		
 	        		svg.selectAll(".dasan")
                 	.transition()
-                	.duration(500)
 	        		.attr("y",h+padding);
 
 					svg.selectAll(".dayi")
 						.data(freshman)
 						 .transition()
-                		.duration(500)
+
 						.attr("y",function(d){
 							return h-yscale(d)+padding;});
 
 					svg.selectAll(".daer")
 			            .data(sophomore)
 						 .transition()
-                		.duration(500)
+
 						.attr("y",function(d,i){
 							return h-yscale(d)+padding-yscale(freshman[i]);
 						});
@@ -420,7 +415,7 @@ d3.json("exam1.json",function(dataset){
 					svg.selectAll(".dasi")
 						.data(senior)
 						.transition()
-                		.duration(500)
+
 						.attr("y",function(d,i){
 							return h-yscale(d)+padding-yscale(freshman[i])-yscale(sophomore[i]);
 						});
@@ -433,7 +428,6 @@ d3.json("exam1.json",function(dataset){
 
 	        		svg.selectAll(".dayi")
                 	.transition()
-                	.duration(500)
 			        .attr("y",function(d,i){
 				      return h-Yscale(d)+padding;;
 						})
@@ -441,14 +435,14 @@ d3.json("exam1.json",function(dataset){
 					svg.selectAll(".daer")
 						.data(sophomore)
 						 .transition()
-                		.duration(500)
+
 						.attr("y",function(d,i){
 							return h-Yscale(freshman[i])-Yscale(d)+padding;});
 
 					svg.selectAll(".dasan")
 			            .data(junior)
 						 .transition()
-                		.duration(500)
+
 						.attr("y",function(d,i){
 							return h-Yscale(freshman[i])-Yscale(sophomore[i])-Yscale(d)+padding;
 						});
@@ -456,7 +450,7 @@ d3.json("exam1.json",function(dataset){
 					svg.selectAll(".dasi")
 						.data(senior)
 						.transition()
-                		.duration(500)
+
 						.attr("y",function(d,i){
 							return h-Yscale(freshman[i])-Yscale(sophomore[i])-Yscale(junior[i])-Yscale(d)+padding;
 						});	
@@ -471,20 +465,20 @@ d3.json("exam1.json",function(dataset){
 	        		
 		        		svg.selectAll(".dasi")
 		                	.transition()
-		                	.duration(500)
+	
 			        		.attr("y",h+padding);
 
 						svg.selectAll(".dayi")
 							.data(freshman)
 							 .transition()
-	                		.duration(500)
+	
 							.attr("y",function(d){
 								return h-yscale(d)+padding;});
 
 						svg.selectAll(".daer")
 				            .data(sophomore)
 							 .transition()
-	                		.duration(500)
+	
 							.attr("y",function(d,i){
 								return h-yscale(d)+padding-yscale(freshman[i]);
 							});
@@ -492,7 +486,7 @@ d3.json("exam1.json",function(dataset){
 						svg.selectAll(".dasan")
 							.data(junior)
 							.transition()
-	                		.duration(500)
+	
 							.attr("y",function(d,i){
 								return h-yscale(d)+padding-yscale(freshman[i])-yscale(sophomore[i]);
 							});
@@ -500,7 +494,7 @@ d3.json("exam1.json",function(dataset){
 						svg.selectAll(".toptotal")
 					       .data(all)
 					       	.transition()
-	                		.duration(500)
+	
 					       .attr("y", function(d,i){
 					       	return h-yscale(d)+padding-10+yscale(senior[i]); 
 				       });	
@@ -512,7 +506,6 @@ d3.selectAll(".daer")
 
 	        		svg.selectAll(".dayi")
                 	.transition()
-                	.duration(500)
 			        .attr("y",function(d,i){
 				      return h-Yscale(d)+padding;;
 						})
@@ -520,14 +513,14 @@ d3.selectAll(".daer")
 					svg.selectAll(".daer")
 						.data(sophomore)
 						 .transition()
-                		.duration(500)
+
 						.attr("y",function(d,i){
 							return h-Yscale(freshman[i])-Yscale(d)+padding;});
 
 					svg.selectAll(".dasan")
 			            .data(junior)
 						 .transition()
-                		.duration(500)
+
 						.attr("y",function(d,i){
 							return h-Yscale(freshman[i])-Yscale(sophomore[i])-Yscale(d)+padding;
 						});
@@ -535,7 +528,7 @@ d3.selectAll(".daer")
 					svg.selectAll(".dasi")
 						.data(senior)
 						.transition()
-                		.duration(500)
+         				
 						.attr("y",function(d,i){
 							return h-Yscale(freshman[i])-Yscale(sophomore[i])-Yscale(junior[i])-Yscale(d)+padding;
 						});	
