@@ -10,6 +10,7 @@
 
 <body>
 <h1>TASK 3: Make The Interaction Happen!</h1>
+<h2>Click the <em>legends</em> on the right to make the interaction happen & click the <em>segments</em> to restore.</h2>
 <script type="text/javascript">
 	
 d3.json("exam1.json",function(dataset){ 
@@ -285,6 +286,7 @@ d3.json("exam1.json",function(dataset){
 						});	
 	        	});
 
+	    //click to restore
  		d3.selectAll(".dayi")
  			.on("click",function(){
 
@@ -332,17 +334,16 @@ d3.json("exam1.json",function(dataset){
 
 					svg.selectAll(".dayi")
 						.data(freshman)
-						 .transition()
-
+						.transition()
 						.attr("y",function(d,i){
-							return h-yscale(d)+padding;});
+							return h-Yscale(d)+padding;});
 
 					svg.selectAll(".dasan")
 			            .data(junior)
 						 .transition()
 
 						.attr("y",function(d,i){
-							return h-yscale(d)+padding-yscale(freshman[i]);
+							return h-Yscale(d)+padding-Yscale(freshman[i]);
 						});
 
 					svg.selectAll(".dasi")
@@ -350,12 +351,11 @@ d3.json("exam1.json",function(dataset){
 						.transition()
 
 						.attr("y",function(d,i){
-							return h-yscale(d)+padding-yscale(freshman[i])-yscale(junior[i]);
+							return h-Yscale(d)+padding-Yscale(freshman[i])-Yscale(junior[i]);
 						});
-						
-
 	        });
 
+	        //click to restore
 			d3.selectAll(".daer")
  				.on("click",function(){
 
@@ -390,7 +390,8 @@ d3.json("exam1.json",function(dataset){
 
 	         	});
 			
-				d3.selectAll(".junior") //click on junior
+				//click on junior
+				d3.selectAll(".junior") 
 	       		 	.on("click",function(){
 	        		
 	        		svg.selectAll(".dasan")
@@ -402,14 +403,13 @@ d3.json("exam1.json",function(dataset){
 						 .transition()
 
 						.attr("y",function(d){
-							return h-yscale(d)+padding;});
+							return h-Yscale(d)+padding;});
 
 					svg.selectAll(".daer")
 			            .data(sophomore)
-						 .transition()
-
+						.transition()
 						.attr("y",function(d,i){
-							return h-yscale(d)+padding-yscale(freshman[i]);
+							return h-Yscale(d)+padding-Yscale(freshman[i]);
 						});
 
 					svg.selectAll(".dasi")
@@ -417,13 +417,13 @@ d3.json("exam1.json",function(dataset){
 						.transition()
 
 						.attr("y",function(d,i){
-							return h-yscale(d)+padding-yscale(freshman[i])-yscale(sophomore[i]);
+							return h-Yscale(d)+padding-Yscale(freshman[i])-Yscale(sophomore[i]);
 						});
 
 	        });
 
-
-	       		 	d3.selectAll(".dasan")
+	       	//click to restore
+	       	d3.selectAll(".dasan")
  				.on("click",function(){
 
 	        		svg.selectAll(".dayi")
@@ -458,52 +458,39 @@ d3.json("exam1.json",function(dataset){
 	         	});
 
 
-
-
-					d3.selectAll(".senior") //click on senior
+				//click on senior
+				d3.selectAll(".senior") 
 	       		 		.on("click",function(){
 	        		
 		        		svg.selectAll(".dasi")
 		                	.transition()
-	
 			        		.attr("y",h+padding);
 
 						svg.selectAll(".dayi")
 							.data(freshman)
-							 .transition()
-	
+							.transition()
 							.attr("y",function(d){
-								return h-yscale(d)+padding;});
+								return h-Yscale(d)+padding;});
 
 						svg.selectAll(".daer")
 				            .data(sophomore)
-							 .transition()
-	
+							.transition()
 							.attr("y",function(d,i){
-								return h-yscale(d)+padding-yscale(freshman[i]);
+								return h-Yscale(d)+padding-Yscale(freshman[i]);
 							});
 
 						svg.selectAll(".dasan")
 							.data(junior)
 							.transition()
-	
 							.attr("y",function(d,i){
-								return h-yscale(d)+padding-yscale(freshman[i])-yscale(sophomore[i]);
+								return h-Yscale(d)+padding-Yscale(freshman[i])-Yscale(sophomore[i]);
 							});
-							
-						svg.selectAll(".toptotal")
-					       .data(all)
-					       	.transition()
-	
-					       .attr("y", function(d,i){
-					       	return h-yscale(d)+padding-10+yscale(senior[i]); 
 				       });	
 
-	        });
 
-d3.selectAll(".daer")
+	       	//click to restore
+			d3.selectAll(".daer")
  				.on("click",function(){
-
 	        		svg.selectAll(".dayi")
                 	.transition()
 			        .attr("y",function(d,i){
@@ -512,15 +499,13 @@ d3.selectAll(".daer")
 
 					svg.selectAll(".daer")
 						.data(sophomore)
-						 .transition()
-
+						.transition()
 						.attr("y",function(d,i){
 							return h-Yscale(freshman[i])-Yscale(d)+padding;});
 
 					svg.selectAll(".dasan")
 			            .data(junior)
-						 .transition()
-
+						.transition()
 						.attr("y",function(d,i){
 							return h-Yscale(freshman[i])-Yscale(sophomore[i])-Yscale(d)+padding;
 						});
@@ -528,18 +513,13 @@ d3.selectAll(".daer")
 					svg.selectAll(".dasi")
 						.data(senior)
 						.transition()
-         				
 						.attr("y",function(d,i){
 							return h-Yscale(freshman[i])-Yscale(sophomore[i])-Yscale(junior[i])-Yscale(d)+padding;
 						});	
 
 	         	});
-
-
 	}
 	)
-
-
 
 </script>
 </body>
