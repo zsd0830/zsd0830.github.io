@@ -153,11 +153,12 @@ d3.json("exam1.json",function(dataset){
 	        //add label
 	     	svg	.append("text")
 	     		.text("Student Number")
-	     		.attr("x",10)
-	     		.attr("y",60)
+	     		.attr("x",0)
+	     		.attr("y",30)
+	     		.attr("transform", "rotate(-90)")
 	     		.attr("font-family", "Arial")
 	        	.attr("font-size", "14px")
-	       		.attr("text-anchor", "left")
+	       		.attr("text-anchor", "end")
 
 	       	svg	.append("text")
 	     		.text("University")
