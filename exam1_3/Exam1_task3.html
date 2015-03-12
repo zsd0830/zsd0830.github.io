@@ -140,23 +140,35 @@ d3.json("exam1.json",function(dataset){
 	       .attr("text-anchor", "middle");
 	      // .attr("transform","rotate(90,0,0)")
 
-	        //add label
-	     	svg	.append("text")
-	     		.text("Student Number")
-	     		.attr("x",10)
-	     		.attr("y",60)
-	     		.attr("font-family", "Arial")
-	        	.attr("font-size", "14px")
-	       		.attr("text-anchor", "left")
 
-	       	svg	.append("text")
-	     		.text("University")
-	     		.attr("x",510)
-	     		.attr("y",500)
-	        	.attr("font-family", "Arial")
-	        	.attr("font-size", "14px")	       
-	        	.attr("text-anchor", "left");
 
+
+	    //add label
+	    svg	.append("text")
+	     	.text("Student Number")
+	   		.attr("x",10)
+	  		.attr("y",60)
+	  		.attr("font-family", "Arial")
+	       	.attr("font-size", "14px")
+	   		.attr("text-anchor", "left")
+
+       	svg	.append("text")
+      		.text("University")
+    		.attr("x",510)
+	  		.attr("y",500)
+	      	.attr("font-family", "Arial")
+	      	.attr("font-size", "14px")	       
+	       	.attr("text-anchor", "left");
+
+
+		svg.append("text") 
+	     	.text("Click legends to do interaction")
+	     	.attr("x",600)
+	     	.attr("y",170)
+	        .attr("font-family", "Arial")
+	        .attr("font-size", "10px")
+	        .attr("text-anchor", "left");
+	       
 	       //add legend
 	       svg.append("rect") 
 	     	.attr("x",600)
@@ -340,8 +352,7 @@ d3.json("exam1.json",function(dataset){
 
 					svg.selectAll(".dasan")
 			            .data(junior)
-						 .transition()
-
+						.transition()
 						.attr("y",function(d,i){
 							return h-Yscale(d)+padding-Yscale(freshman[i]);
 						});
@@ -367,8 +378,7 @@ d3.json("exam1.json",function(dataset){
 
 					svg.selectAll(".daer")
 						.data(sophomore)
-						 .transition()
-
+						.transition()
 						.attr("y",function(d,i){
 							return h-Yscale(freshman[i])-Yscale(d)+padding;});
 
