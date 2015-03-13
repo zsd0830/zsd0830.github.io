@@ -12,8 +12,13 @@
 <h1>TASK 2: Total Numbers of IE Students in Five Universities.</h1>
 <script type="text/javascript">
 	
+//create new datasets
 d3.json("exam1.json",function(dataset){ 
 
+		var margin={top: 20, right: 20, bottom: 30, left: 40};
+		var width=800;
+		var	height=550;
+		var	padding=80;
 		var freshman=[];
 		var sophomore=[];
 		var junior=[];
@@ -21,39 +26,32 @@ d3.json("exam1.json",function(dataset){
 		var univ=["University A","University B","University C","University D","University E"];
 		var all=[];
 		var distance=40;
+		var sum;
 
 		for(var i=0;i<univ.length;i++)
 		{
-			freshman.push( dataset[0][""+univ[i]+""] );
-			sophomore.push( dataset[1][""+univ[i]+""] );
-			junior.push( dataset[2][""+univ[i]+""] );
-			senior.push( dataset[3][""+univ[i]+""] );
-			var sum=freshman[i]+sophomore[i]+junior[i]+senior[i];
+			freshman.push(dataset[0][""+univ[i]+""]);
+			sophomore.push(dataset[1][""+univ[i]+""]);
+			junior.push(dataset[2][""+univ[i]+""]);
+			senior.push(dataset[3][""+univ[i]+""]);
+			sum=freshman[i]+sophomore[i]+junior[i]+senior[i];
 			all.push(sum);
 		}
-
-
-		var margin={top: 20, right: 20, bottom: 30, left: 40};
-		var width=800;
-			height=550;
-			padding=80;
-		var w=500;
-			h=400;
 					
 		var svg = d3.select("body")
                 .append("svg")
                 .attr("width", width + margin.left + margin.right)
-                .attr("height", height + margin.top + margin.bottom)
+                .attr("height", height + margin.top + 5*margin.bottom)
                 .append("g")
                 .attr("transform", "translate(" + margin.left + "," + margin.top + ")");//svg
 
 		var Xscale=d3.scale.ordinal()
 					.domain(d3.range(all.length))
-					.rangeRoundBands([padding,w],0.1);
+					.rangeRoundBands([padding,500],0.1);
 
 		var Yscale=d3.scale.linear()
 					.domain([0,d3.max(all,function(d){return d;})])
-					.range([0,h]);
+					.range([0,400]);
 
 
 		//add rects
@@ -65,7 +63,7 @@ d3.json("exam1.json",function(dataset){
 				return(Xscale(i));
 				})
 			.attr("y",function(d){
-				return h-Yscale(d)+padding;
+				return 400-Yscale(d)+padding;
 			})
 			.attr("width",Xscale.rangeBand())
 			.attr("height",function(d){
@@ -83,7 +81,7 @@ d3.json("exam1.json",function(dataset){
 				return(Xscale(i));
 				})
 			.attr("y",function(d,i){
-				return h-Yscale(freshman[i])-Yscale(d)+padding;
+				return 400-Yscale(freshman[i])-Yscale(d)+padding;
 			})
 			.attr("width",Xscale.rangeBand())
 			.attr("height",function(d){
@@ -100,7 +98,7 @@ d3.json("exam1.json",function(dataset){
 				return(Xscale(i));
 				})
 			.attr("y",function(d,i){
-				return h-Yscale(freshman[i])-Yscale(sophomore[i])-Yscale(d)+padding;
+				return 400-Yscale(freshman[i])-Yscale(sophomore[i])-Yscale(d)+padding;
 			})
 			.attr("width",Xscale.rangeBand())
 			.attr("height",function(d){
@@ -117,7 +115,7 @@ d3.json("exam1.json",function(dataset){
 				return(Xscale(i));
 				})
 			.attr("y",function(d,i){
-				return h-Yscale(freshman[i])-Yscale(sophomore[i])-Yscale(junior[i])-Yscale(d)+padding;
+				return 400-Yscale(freshman[i])-Yscale(sophomore[i])-Yscale(junior[i])-Yscale(d)+padding;
 			})
 			.attr("width",Xscale.rangeBand())
 			.attr("height",function(d){
@@ -133,7 +131,7 @@ d3.json("exam1.json",function(dataset){
 	       .append("text")
 	       .text(function(d){return d;})
 	       .attr("x", function(d, i) {return Xscale(i)+35;})
-	       .attr("y", function(d){return h-Yscale(d)+padding-10;})
+	       .attr("y", function(d){return 400-Yscale(d)+padding-10;})
 	       .attr("font-family", "Arial")
 	       .attr("font-size", "14px")	
 	       .attr("text-anchor", "middle");	
@@ -145,7 +143,7 @@ d3.json("exam1.json",function(dataset){
 	       .append("text")
 	       .text(function(d){return d;})
 	       .attr("x", function(d, i) {return Xscale(i)+40;})
-	       .attr("y", h+padding+30)
+	       .attr("y", 400+padding+30)
 	       .attr("class","univ")
 	       .attr("text-anchor", "middle");
 	      // .attr("transform","rotate(90,0,0)")
@@ -246,11 +244,11 @@ d3.json("exam1.json",function(dataset){
 		svg .append("g")
 			.attr("class","axis")
 			.call(Xaxis)
-			.attr("transform", "translate(0," + (h+padding)+ ")");//x-axis
+			.attr("transform", "translate(0," + (400+padding)+ ")");//x-axis
 
 		var zscale=d3.scale.linear()
 					.domain([0,d3.max(all,function(d){return d;})])
-					.range([h,0]);
+					.range([400,0]);
 
 		var Yaxis = d3.svg.axis()
 					  .scale(zscale)
