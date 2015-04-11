@@ -10,35 +10,33 @@
 </head>
 
 
-
-
-
 <body>
 <h1 align="center">Homework 4: Treemap</h1>
-  <div display="inline"  align="center"><p><strong>Author Name:</strong> Shaodong Zhang</p>   <p>WHAT IS THE RELATIONSHIP!!!</p></div>
+  <div display="inline"  align="center"><p><strong>Author Name:</strong> Shaodong Zhang</p>   <p><strong>Choose different labals to see the sales in 19 states of different regions. The sizes of rectangles mean sales’ value and the texts on it are types that are popular.</strong></p></div>
+  
+  <HR style="FILTER: alpha(opacity=100,finishopacity=0,style=3)" width="80%" color=#666 SIZE=3>
 
-<label><input type="radio" name="mode" value="Central" checked> Central</label>
+  <br/>
+
+  <div align="center">
+  <label><input type="radio" name="mode" value="Central" checked> Central</label>
   <label><input type="radio" name="mode" value="East"> East</label>
- <label><input type="radio" name="mode" value="South"> South</label>
- <label><input type="radio" name="mode" value="West"> West</label>
- <label><input type="radio" name="mode" value="North"> North</label>
-
-
-
-
+  <label><input type="radio" name="mode" value="South"> South</label>
+  <label><input type="radio" name="mode" value="West"> West</label>
+  </div>
 
 <script>
-   var n = 3;
+   var n = 0;
 
   var margin = {top: 10, right: 20, bottom: 10, left: 20},
-    w = 1200 - margin.left - margin.right,
-    h = 800 - margin.top - margin.bottom;   //width & height
+    w = 1200,
+    h = 800;   //width & height
   
   var color = d3.scale.category20();   //color
 
   var svg = d3.select("body").append("svg")
-      .attr("width", 1200)
-      .attr("height", 800)
+      .attr("width",  w + margin.left + margin.right)
+      .attr("height", h + margin.top + margin.bottom)
       .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
   
   d3.csv("coffee.csv", function(error, root) {
@@ -91,8 +89,7 @@ d3.selectAll("input").on("change", function change() {
     if(this.value==="East"){var m=1;}
       else if (this.value==="South") {m=2;}
         else if (this.value==="West") {m=3;}
-          else if (this.value==="North") {m=4;}
-  
+    else {m=0;}
 
       var treemap = d3.layout.treemap()
         .size([w, h])

@@ -15,3 +15,8 @@ text {
   position: absolute;
   text-indent: 2px;
 }
+
+svg {
+    position: absolute; left: 0; top: 200px; right: 0;
+    margin: auto;    /* 有了这个就自动居中了 */
+}
