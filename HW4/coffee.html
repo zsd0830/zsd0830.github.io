@@ -84,12 +84,37 @@
       .text(function(d) { return d.children ? null : d.type; })
       .style("opacity", function(d) { d.w = this.getComputedTextLength(); return d.dx > d.w ? 1 : 0; });
     
+  });
+
+</script>
+
+
+<script>
 
 d3.selectAll("input").on("change", function change() {
-    if(this.value==="East"){var m=1;}
+    if(this.value==="East"){m=1}
       else if (this.value==="South") {m=2;}
         else if (this.value==="West") {m=3;}
     else {m=0;}
+
+
+var margin = {top: 10, right: 20, bottom: 10, left: 20},
+    w = 1200,
+    h = 800;   //width & height
+  
+  var color = d3.scale.category20();   //color
+
+  var svg = d3.select("body").append("svg")
+      .attr("width",  w + margin.left + margin.right)
+      .attr("height", h + margin.top + margin.bottom)
+      .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+       d3.csv("coffee.csv", function(error, root) {
+    
+      var nest=d3.nest()
+        .key(function(d){return d.region;})
+        .key(function(d){return d.state;})
+        .entries(root);
 
       var treemap = d3.layout.treemap()
         .size([w, h])
@@ -129,7 +154,6 @@ d3.selectAll("input").on("change", function change() {
       .style("opacity", function(d) { d.w = this.getComputedTextLength(); return d.dx > d.w ? 1 : 0; });
     
   });
-
 });
 
 </script>

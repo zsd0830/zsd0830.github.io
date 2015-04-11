@@ -3,9 +3,6 @@ text {
   text-align: center;
 }
 
-#central {
-  line-height:50px
-}
 
 .cell{
   border: solid 1px white;
@@ -18,5 +15,5 @@ text {
 
 svg {
     position: absolute; left: 0; top: 200px; right: 0;
-    margin: auto;    /* 有了这个就自动居中了 */
+    margin: auto;   
 }
