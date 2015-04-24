@@ -66,14 +66,12 @@
 				d3.selectAll("td")
       				.on("mouseover",function(d){
 
-      						var rowmark=d.ItemNo;
-
-      						//console.log(rowmark);
+      						var one=d.ItemNo;
 
       						 d3.selectAll(".newrow")
       						 	.style("background",function(d){
       								if(d3.select(this).attr("judge")==0)
-      									{if(d.ItemNo == rowmark)
+      									{if(d.ItemNo == one)
       										return "yellow";
       									}
       								if(d3.select(this).attr("judge")==1)
@@ -97,11 +95,11 @@
       				.on("click",function(d){
 
 
-      						var rowmark=d.ItemNo;
+      						var one=d.ItemNo;
 
       						d3.selectAll(".newrow").attr("judge",function(d){
 
-      								if(d.ItemNo==rowmark)
+      								if(d.ItemNo==one)
       									return 1;
       								else
       									return 0;
@@ -111,7 +109,7 @@
 
       						 d3.selectAll(".newrow")
       						 	.style("background",function(d){
-      								if(d.ItemNo == rowmark)
+      								if(d.ItemNo == one)
       									return "green";
       							});
 
