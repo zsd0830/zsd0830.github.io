@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>Exam2_3_1</title>
+		<script type="text/javascript" src="d3.js"></script>
+		<script type="text/javascript" src="jquery-1.11.2.js"></script>
+		<style type="text/css">
+						
+		</style>
+	</head>
+
+	<body>
+		<h1 align="center">Exam2_3_1</h1>
+
+
+		<table border="4" align="center" width="500" cellspacing="2">
+			
+			<thead align="right">
+				<tr bgcolor="#CCCCCC">
+					<th>ItemNo</th>
+					<th>A</th>
+					<th>B</th>
+					<th>C</th>
+					<th>D</th>
+					<th>E</th>
+					<th>F</th>
+					<th>G</th>
+				</tr>
+			</thead>
+			
+			<tbody>	
+			<tr>    </tr>
+			</tbody>
+		
+		</table>
+
+
+		<script type="text/javascript">
+			var w=1000;
+			var h=450;
+					
+			var svg = d3.select("body")
+						.append("svg")
+						.attr("width", w)
+						.attr("height", h);
+
+			d3.json("exam2.json",function(d){
+				 
+				 for (var i=0; i<d.length;i++){
+						var newRow=d3.select("tbody")
+								.selectAll(".newrow")
+								.data(d).enter().append("tr")
+								.attr("class","newrow")
+								.attr("judge",0);
+						
+						newRow.append("td").text(function(d){return d.ItemNo}).style("text-align","right");
+						newRow.append("td").text(function(d){return d.A}).style("text-align","right");
+						newRow.append("td").text(function(d){return d.B}).style("text-align","right");
+						newRow.append("td").text(function(d){return d.C}).style("text-align","right");
+						newRow.append("td").text(function(d){return d.D}).style("text-align","right");
+						newRow.append("td").text(function(d){return d.E}).style("text-align","right");
+						newRow.append("td").text(function(d){return d.F}).style("text-align","right");
+						newRow.append("td").text(function(d){return d.G}).style("text-align","right");
+					}
+				
+
+				d3.selectAll("td")
+      				
+      				.on("mouseover",function(d){
+
+      						var one=d.ItemNo;
+
+      						d3.selectAll(".newrow")
+      						 	.style("background",function(d){
+      								if(d3.select(this).attr("judge")==0)
+      								{if(d.ItemNo == one)
+      									return "yellow";
+      								}
+      								if(d3.select(this).attr("judge")==1)
+      									return "green";
+
+      							});
+      				});
+
+      				.on("mouseout",function(d){
+
+      						d3.selectAll(".newrow")
+      						 	.style("background",function(d){
+      								
+      								if(d3.select(this).attr("judge")==1)
+      									return "green";
+
+      							});
+         			});
+
+      				.on("click",function(d){
+
+
+      						var one=d.ItemNo;
+
+      						d3.selectAll(".newrow").attr("judge",function(d){
+
+      								if(d.ItemNo==one)
+      									return 1;
+      								else
+      									return 0;
+
+      						    });
+
+      						 d3.selectAll(".newrow")
+      						 	.style("background",function(d){
+      								if(d.ItemNo == one)
+      									return "green";
+      							});
+
+    	   				});
+
+      		});
+
+		</script>
+	</body>
+</html>
