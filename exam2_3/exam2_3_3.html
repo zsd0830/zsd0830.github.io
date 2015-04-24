@@ -1,32 +1,183 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="utf-8">
-		<title>D3: Dynamic axes generated based on min/max values of randomized data</title>
-		<script type="text/javascript" src="v3.js"></script>
-		<style type="text/css">
-			
-			.axis path,
-			.axis line {
-				fill: none;
-				stroke: black;
-				shape-rendering: crispEdges;
-			}
-			
-			.axis text {
-				font-family: sans-serif;
-				font-size: 11px;
-			}
+      <head>
+            <meta charset="utf-8">
+            <title>Exam2_3_3</title>
+            <script type="text/javascript" src="d3.js"></script>
+            <style type="text/css">              
+            </style>
+      </head>
 
-		</style>
-	</head>
-	<body>
-		<script type="text/javascript">
+      <body>
+            <h1 align="center">Exam2_3_3 (By: Shaodong Zhang)</h1>
+            <h2 align="center">SimulSort</h2>
+
+            <table border="4" align="center" width="500" cellspacing="2">
+                  
+                  <thead align="right">
+                        <tr bgcolor="#CCCCCC">
+                              <th>ItemNo</th>
+                              <th>A</th>
+                              <th>B</th>
+                              <th>C</th>
+                              <th>D</th>
+                              <th>E</th>
+                              <th>F</th>
+                              <th>G</th>
+                        </tr>
+                  </thead>
+                  
+                  <tbody>     
+                  <tr>    </tr>
+                  </tbody>
+            
+            </table>
+
+
+            <script type="text/javascript">
+                var w=500;
+                var h=100;
+                              
+                var svg = d3.select("body")
+                            .append("svg")
+                            .attr("width", w)
+                            .attr("height", h);
+
+                  d3.json("exam2.json",function(d){
+                         
+                //create the new datasets
+                //这里需要i来进行计数                 
+              	var ItemNo=d.map(function(d,i) {return {"value1":d.ItemNo,"value2":i+1}})
+              				
+              	var A=d.map(function(d,i) {return {"value1":d.A,"value2":i+1}})
+              			
+             	var B=d.map(function(d,i) {return {"value1":d.B,"value2":i+1}})
+              			
+              	var C=d.map(function(d,i) {return {"value1":d.C,"value2":i+1}})
+              			
+              	var D=d.map(function(d,i) {return {"value1":d.D,"value2":i+1}})
+              			
+              	var E=d.map(function(d,i) {return {"value1":d.E,"value2":i+1}})
+              			
+              	var F=d.map(function(d,i) {return {"value1":d.F,"value2":i+1}})
+              			
+              	var G=d.map(function(d,i) {return {"value1":d.G,"value2":i+1}})
+              			
+
+
+              	//sort
+              	var newItemNo=ItemNo.sort(function(a,b){return a.value1<b.value1? 1:-1 ;});
+              	var newA=A.sort(function(a,b){return a.value1<b.value1? 1:-1 ;});
+              	var newB=B.sort(function(a,b){return a.value1<b.value1? 1:-1 ;});
+              	var newC=C.sort(function(a,b){return a.value1<b.value1? 1:-1 ;});
+              	var newD=D.sort(function(a,b){return a.value1<b.value1? 1:-1 ;});
+              	var newE=E.sort(function(a,b){return a.value1<b.value1? 1:-1 ;});
+              	var newF=F.sort(function(a,b){return a.value1<b.value1? 1:-1 ;});
+              	var newG=G.sort(function(a,b){return a.value1<b.value1? 1:-1 ;});
 
 
 
+              var  newRow=d3.select("tbody")
+      				.selectAll(".newrow")
+      				.data(d)
+      				.enter()
+      				.append("tr")
+      				.attr("class","newrow");
+      		
+
+      				newRow.append("td")
+      					.data(newItemNo)
+                        .text(function(d){return d.value1})
+                        .style("text-align","right");
+                  newRow.append("td")
+                  		.data(newA)
+                        .text(function(d){return d.value1})
+                        .style("text-align","right");
+                  newRow.append("td")
+                  		.data(newB)
+                        .text(function(d){return d.value1})
+                        .style("text-align","right");
+                  newRow.append("td")
+                  		.data(newC)
+                        .text(function(d){return d.value1})
+                        .style("text-align","right");
+                  newRow.append("td")
+                  		.data(newD)
+                        .text(function(d){return d.value1})
+                        .style("text-align","right");
+                  newRow.append("td")
+                  		.data(newE)
+                        .text(function(d){return d.value1})
+                        .style("text-align","right");
+                  newRow.append("td")
+                  		.data(newF)
+                        .text(function(d){return d.value1})
+                        .style("text-align","right");
+                  newRow.append("td")
+                  		.data(newG)
+                        .text(function(d){return d.value1})
+                        .style("text-align","right");
+      				
+      				
+                d3.selectAll("td").attr("judge",0);
 
 
-		</script>
-	</body>
+
+                d3.selectAll("td")
+                              .on("mouseover",function(d){
+
+                                          var one=d.value2;
+
+                                           d3.selectAll("td")
+                                                .style("background",function(d){
+                                                      if(d3.select(this).attr("judge")==0)
+                                                            {if(d.value2 == one)
+                                                                  return "yellow";
+                                                            }
+                                                      if(d3.select(this).attr("judge")==1)
+                                                            return "green";
+
+                                                });
+                              })
+
+                              .on("mouseout",function(d){
+
+                                          d3.selectAll("td")
+                                                .style("background",function(d){
+                                                      
+                                                      if(d3.select(this).attr("judge")==1)
+                                                            return "green";
+
+                                                });
+
+                              })
+                              
+                              .on("click",function(d){
+
+
+                                          var one=d.value2;
+
+                                          d3.selectAll("td").attr("judge",function(d){
+
+                                                      if(d.value2==one)
+                                                            return 1;
+                                                      else
+                                                            return 0;
+
+                                          });
+
+                                           d3.selectAll(".newrow")
+                                                .style("background",function(d){
+                                                      if(d.value2 == one)
+                                                            return "green";
+                                                });
+
+                                    });
+
+
+            })
+            </script>
+
+           
+      </body>
 </html>
