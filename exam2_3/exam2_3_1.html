@@ -4,7 +4,6 @@
 		<meta charset="utf-8">
 		<title>Exam2_3_1</title>
 		<script type="text/javascript" src="d3.js"></script>
-		<script type="text/javascript" src="jquery-1.11.2.js"></script>
 		<style type="text/css">
 						
 		</style>
@@ -47,7 +46,7 @@
 
 			d3.json("exam2.json",function(d){
 				 
-				 for (var i=0; i<d.length;i++){
+				for (var i=0; i<d.length;i++){
 						var newRow=d3.select("tbody")
 								.selectAll(".newrow")
 								.data(d).enter().append("tr")
@@ -64,25 +63,24 @@
 						newRow.append("td").text(function(d){return d.G}).style("text-align","right");
 					}
 				
-
 				d3.selectAll("td")
-      				
       				.on("mouseover",function(d){
 
-      						var one=d.ItemNo;
+      						var rowmark=d.ItemNo;
 
-      						d3.selectAll(".newrow")
+      						//console.log(rowmark);
+
+      						 d3.selectAll(".newrow")
       						 	.style("background",function(d){
       								if(d3.select(this).attr("judge")==0)
-      								{if(d.ItemNo == one)
-      									return "yellow";
-      								}
+      									{if(d.ItemNo == rowmark)
+      										return "yellow";
+      									}
       								if(d3.select(this).attr("judge")==1)
       									return "green";
 
       							});
-      				});
-
+      				})
       				.on("mouseout",function(d){
 
       						d3.selectAll(".newrow")
@@ -92,31 +90,44 @@
       									return "green";
 
       							});
-         			});
 
+
+
+      				})
       				.on("click",function(d){
 
 
-      						var one=d.ItemNo;
+      						var rowmark=d.ItemNo;
 
       						d3.selectAll(".newrow").attr("judge",function(d){
 
-      								if(d.ItemNo==one)
+      								if(d.ItemNo==rowmark)
       									return 1;
       								else
       									return 0;
 
-      						    });
+
+      						});
 
       						 d3.selectAll(".newrow")
       						 	.style("background",function(d){
-      								if(d.ItemNo == one)
+      								if(d.ItemNo == rowmark)
       									return "green";
       							});
 
-    	   				});
+      					});
+
+
+
+
+
+
+
+
 
       		});
+
+
 
 		</script>
 	</body>
